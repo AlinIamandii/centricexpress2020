@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Movies.MVC/wwwroot
+/.vs/CentricExpress2020
+/Movies.MVC/obj
+/Movies.WebApi/obj
+/Movies.WebApi/bin
+/Movies.MVC/bin
