@@ -8,9 +8,15 @@ namespace Movies.Business
 {
     public class MovieBusiness
     {
+        private readonly IMovieRepository _movieRepository;
+
+        public MovieBusiness(IMovieRepository movieRepository)
+        {
+            _movieRepository = movieRepository;
+        }
         public List<MovieModel> Get()
         {
-            var movies = Database.Movies.Select(m => new MovieModel()
+            var movies =_movieRepository.Get().Select(m => new MovieModel()
             {
                 Id = m.Id,
                 Title = m.Title,
@@ -33,7 +39,7 @@ namespace Movies.Business
                 Rating = movieModel.Rating,
                 HasWonOscar = movieModel.HasWonOscar
             };
-            Database.Movies.Add(movie);
+            _movieRepository.Add(movie);
         }
     }
 }
