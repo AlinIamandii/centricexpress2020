@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Movies.WebApi.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using Movies.Business;
+using Movies.Business.Model;
 
 namespace Movies.WebApi.Controllers
 {
@@ -12,43 +8,24 @@ namespace Movies.WebApi.Controllers
     [ApiController]
     public class MoviesController : ControllerBase
     {
-        private static List<Movie> _movies = new List<Movie>{
-            new Movie
-            {
-                Id = Guid.NewGuid(),
-                Title = "Titanic",
-                Year = 1997,
-                Rating = 7.8,
-                HasWonOscar = true
-            },
-            new Movie
-            {
-                Id = Guid.NewGuid(),
-                Title = "The Notebook",
-                Year = 2004,
-                Rating = 7.8,
-                HasWonOscar = false
-            },
-            new Movie
-            {
-                Id = Guid.NewGuid(),
-                Title = "Avatar",
-                Year = 2009,
-                Rating = 6.8,
-                HasWonOscar = true
-            }
-        };
+        private readonly MovieBusiness _movieBusiness;
+
+        public MoviesController(MovieBusiness movieBusiness)
+        {
+            _movieBusiness = movieBusiness;
+        }
 
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_movies);
+            var movies = _movieBusiness.Get();
+            return Ok(movies);
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Movie movie)
+        public IActionResult Create([FromBody] MovieModel movie)
         {
-            _movies.Add(movie);
+            _movieBusiness.Add(movie);
             return Ok();
         }
     }

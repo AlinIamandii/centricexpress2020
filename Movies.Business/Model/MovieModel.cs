@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Movies.WebApi.Models
+namespace Movies.Business.Model
 {
-    public class Movie
+    public class MovieModel
     {
         public Guid Id { get; set; }
 

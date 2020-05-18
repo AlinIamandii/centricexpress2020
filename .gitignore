@@ -8,3 +8,7 @@
 /Movies.WebApi/obj
 /Movies.WebApi/bin
 /Movies.MVC/bin
+/Movies.Business/obj
+/Movies.Data/obj
+/Movies.Business/bin/Debug/netcoreapp3.1
+/Movies.Data/bin/Debug/netcoreapp3.1
