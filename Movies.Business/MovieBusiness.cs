@@ -31,7 +31,7 @@ namespace Movies.Business
 
         public void Add(MovieModel movieModel)
         {
-            var movie = new Movie()
+            var movie = new Movie
             {
                 Id = movieModel.Id,
                 Year = movieModel.Year,
