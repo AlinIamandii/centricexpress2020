@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Movies.Business.Model
 {
@@ -13,5 +14,6 @@ namespace Movies.Business.Model
         public double Rating { get; set; }
 
         public bool HasWonOscar { get; set; }
+        public ICollection<CharacterModel> Characters { get; set; }
     }
 }

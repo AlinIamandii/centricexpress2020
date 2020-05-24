@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Movies.Data.Entities;
 
 namespace Movies.Data
@@ -15,7 +16,7 @@ namespace Movies.Data
 
         public virtual IEnumerable<Movie> Get()
         {
-            return _dbContext.Set<Movie>().AsEnumerable();
+            return _dbContext.Set<Movie>().Include(movie => movie.Characters).AsEnumerable();
         }
 
         public void Add(Movie entity)

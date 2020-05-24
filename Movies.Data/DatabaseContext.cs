@@ -14,19 +14,21 @@ namespace Movies.Data
         }
 
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<Character> Characters { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            var titanicId = Guid.NewGuid();
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Movie>().HasData(new List<Movie>
             {
                 new Movie
                 {
-                    Id = Guid.NewGuid(),
+                    Id = titanicId,
                     Title = "Titanic",
                     Year = 1997,
                     Rating = 7.8,
-                    HasWonOscar = true
+                    HasWonOscar = true,
                 },
                 new Movie
                 {
@@ -43,6 +45,21 @@ namespace Movies.Data
                     Year = 2009,
                     Rating = 6.8,
                     HasWonOscar = true
+                }
+            });
+            modelBuilder.Entity<Character>().HasData(new List<Character>
+            {
+                new Character
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Rose",
+                    MovieId = titanicId
+                },
+                new Character
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Jack",
+                    MovieId = titanicId
                 }
             });
         }

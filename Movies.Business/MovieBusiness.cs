@@ -16,13 +16,19 @@ namespace Movies.Business
         }
         public List<MovieModel> Get()
         {
-            var movies =_movieRepository.Get().Select(m => new MovieModel()
+            var movies = _movieRepository.Get().Select(m => new MovieModel()
             {
                 Id = m.Id,
                 Title = m.Title,
                 Rating = m.Rating,
                 HasWonOscar = m.HasWonOscar,
-                Year = m.Year
+                Year = m.Year,
+                Characters = m.Characters.Select(c =>
+                    new CharacterModel
+                    {
+                        Name = c.Name
+                    }).ToList()
+
             })
                 .ToList();
 
