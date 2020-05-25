@@ -6,7 +6,7 @@ using Movies.Data.Entities;
 
 namespace Movies.Business
 {
-    public class MovieBusiness
+    public class MovieBusiness : IMovieBusiness
     {
         private readonly IMovieRepository _movieRepository;
 
