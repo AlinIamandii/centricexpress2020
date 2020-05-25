@@ -8,9 +8,9 @@ namespace Movies.WebApi.Controllers
     [ApiController]
     public class MoviesController : ControllerBase
     {
-        private readonly MovieBusiness _movieBusiness;
+        private readonly IMovieBusiness _movieBusiness;
 
-        public MoviesController(MovieBusiness movieBusiness)
+        public MoviesController(IMovieBusiness movieBusiness)
         {
             _movieBusiness = movieBusiness;
         }

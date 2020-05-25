@@ -21,7 +21,7 @@ namespace Movies.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<MovieBusiness>();
+            services.AddSingleton<IMovieBusiness, MovieBusiness>();
             services.AddSwaggerGen(s =>
             {
                 s.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" }); 
