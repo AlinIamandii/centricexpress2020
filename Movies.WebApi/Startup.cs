@@ -23,7 +23,7 @@ namespace Movies.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<MovieBusiness>();
+            services.AddSingleton<IMovieBusiness, MovieBusiness>();
             services.AddSingleton<IMovieRepository, MovieRepository>();
             services.AddSwaggerGen(s =>
             {
