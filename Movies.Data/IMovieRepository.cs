@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Movies.Data.Entities;
 
 namespace Movies.Data
@@ -7,5 +8,6 @@ namespace Movies.Data
     {
         IEnumerable<Movie> Get();
         void Add(Movie entity);
+        void Delete(Guid id);
     }
 }

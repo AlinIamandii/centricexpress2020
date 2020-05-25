@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Movies.Data.Entities;
@@ -22,6 +23,13 @@ namespace Movies.Data
         public void Add(Movie entity)
         {
             _dbContext.Set<Movie>().Add(entity);
+            _dbContext.SaveChanges();
+        }
+
+        public void Delete(Guid id)
+        {
+            var movie = _dbContext.Set<Movie>().FirstOrDefault(m => m.Id == id);
+            _dbContext.Entry(movie).State = EntityState.Deleted;
             _dbContext.SaveChanges();
         }
     }

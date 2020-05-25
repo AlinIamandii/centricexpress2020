@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Movies.Business.Model;
 using Movies.Data;
@@ -33,6 +34,11 @@ namespace Movies.Business
                 .ToList();
 
             return movies;
+        }
+
+        public void Delete(Guid id)
+        {
+            _movieRepository.Delete(id);
         }
 
         public void Add(MovieModel movieModel)
