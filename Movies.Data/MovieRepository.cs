@@ -17,7 +17,16 @@ namespace Movies.Data
 
         public virtual IEnumerable<Movie> Get()
         {
-            return _dbContext.Set<Movie>().Include(movie => movie.Characters).AsEnumerable();
+            return _dbContext.Set<Movie>()
+	            .AsNoTracking()
+	            .Include(movie => movie.Characters).AsEnumerable();
+        }
+
+        public Movie Get(Guid id)
+        {
+            return _dbContext.Set<Movie>()
+	            .Include(movie => movie.Characters)
+                .SingleOrDefault(m => m.Id == id);
         }
 
         public void Add(Movie entity)
@@ -31,6 +40,16 @@ namespace Movies.Data
             var movie = _dbContext.Set<Movie>().FirstOrDefault(m => m.Id == id);
             _dbContext.Entry(movie).State = EntityState.Deleted;
             _dbContext.SaveChanges();
+        }
+
+        public void Edit(Movie entity)
+        {
+            _dbContext.SaveChanges();
+        }
+
+        public bool Exists(Guid id)
+        {
+	        return _dbContext.Set<Movie>().AsNoTracking().Any(m => m.Id == id);
         }
     }
 }
