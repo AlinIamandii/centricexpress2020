@@ -1,4 +1,4 @@
-Pentru a configura si interactiona cu baza de date s-au urmarit utmatorii pasi:
+Pentru a configura si interactiona cu baza de date s-au urmarit urmatorii pasi:
 
 1.	Instalare library necesare
 Accesati Tools -> NuGet Package Manager -> Manage NuGet Packages For Solution
