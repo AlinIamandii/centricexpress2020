@@ -17,21 +17,22 @@
 5. Pentru a vizualiza mai usor adaugam un pachet
 	1. Click dreapta pe proiect -> Manage nuget packages -> Swashbuckle.AspNetCore
 	2. In Startup inregistram swager in servicii 
-		`services.AddSwaggerGen(s =>
-				{
-					s.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" }); 
-
-				});
-		`
+	
+		```
+		services.AddSwaggerGen(s =>
+		{
+			s.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" }); 
+		});	
+		```
 	3. In Startup configuram swager
-		`
+	
+		``` 
 		app.UseSwagger();
-
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-            });
-		`
+		app.UseSwaggerUI(c =>
+		{
+			c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+		});
+		```
 
 ### Pentru a crea un proiect MVC trebuie urmati urmatorii pasi
 1. Adaugam un nou proiect in solutie
