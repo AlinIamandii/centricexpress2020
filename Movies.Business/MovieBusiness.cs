@@ -15,6 +15,7 @@ namespace Movies.Business
         {
             _movieRepository = movieRepository;
         }
+        
         public List<MovieModel> Get()
         {
 	        var movies = _movieRepository.Get()
@@ -49,6 +50,20 @@ namespace Movies.Business
             _movieRepository.Add(movie);
         }
 
+        public void AsignOscar(MovieModel movieModel)
+        {
+            var lastYear = DateTime.Today.AddYears(-1).Year;
+            if(movieModel.Year == lastYear)
+            {
+                if(movieModel.Rating > 8)
+                {
+                    var entity = _movieRepository.Get(movieModel.Id);
+                    entity.HasWonOscar = true;
+                    _movieRepository.Save();
+                }
+            }
+        }
+
         public void Edit(MovieModel movieModel)
         {
 	        var movie = _movieRepository.Get(movieModel.Id);
@@ -67,19 +82,29 @@ namespace Movies.Business
 
         private MovieModel MapToMovieModel(Movie movie)
         {
-	        return new MovieModel
-	        {
-		        Id = movie.Id,
-		        Title = movie.Title,
-		        Rating = movie.Rating,
-		        HasWonOscar = movie.HasWonOscar,
-		        Year = movie.Year,
-		        Characters = movie.Characters.Select(c =>
-			        new CharacterModel
-			        {
-				        Name = c.Name
-			        }).ToList()
-	        };
+            return new MovieModel
+            {
+                Id = movie.Id,
+                Title = movie.Title,
+                Rating = movie.Rating,
+                HasWonOscar = movie.HasWonOscar,
+                Year = movie.Year,
+                Characters = MapCharacters(movie)
+            };
+        }
+
+        private ICollection<CharacterModel> MapCharacters(Movie movie)
+        {
+            if(movie.Characters != null && movie.Characters.Any())
+            {
+                return movie.Characters.Select(c =>
+                    new CharacterModel
+                    {
+                        Name = c.Name
+                    }).ToList();
+            }
+
+            return new List<CharacterModel>();
         }
     }
 }

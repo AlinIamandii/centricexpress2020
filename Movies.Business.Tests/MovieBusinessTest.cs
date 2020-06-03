@@ -45,7 +45,8 @@ namespace Movies.Business.Tests
                     Id = movie.Id,
                     Rating = movie.Rating,
                     Title = movie.Title,
-                    Year = movie.Year
+                    Year = movie.Year,
+                    Characters = new List<CharacterModel>()
                 }
             };
             _movieRepositoryMock.Setup(r => r.Get())

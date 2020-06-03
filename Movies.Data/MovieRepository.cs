@@ -42,6 +42,11 @@ namespace Movies.Data
             _dbContext.SaveChanges();
         }
 
+        public void Save()
+        {
+            _dbContext.SaveChanges();
+        }
+
         public void Edit(Movie entity)
         {
             _dbContext.SaveChanges();

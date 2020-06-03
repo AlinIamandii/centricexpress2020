@@ -4,11 +4,12 @@ using Movies.Data.Entities;
 
 namespace Movies.Data
 {
-	public interface IMovieRepository
-	{
-		IEnumerable<Movie> Get();
+    public interface IMovieRepository
+    {
+        IEnumerable<Movie> Get();
 
-		Movie Get(Guid id);
+        Movie Get(Guid id);
+        void Save();
 
 		void Add(Movie entity);
 

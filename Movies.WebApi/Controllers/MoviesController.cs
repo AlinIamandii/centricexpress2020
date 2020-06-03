@@ -43,6 +43,13 @@ namespace Movies.WebApi.Controllers
             return Ok();
         }
 
+        [HttpPatch]
+        public IActionResult AsignOscar([FromBody] MovieModel movie)
+        {
+            _movieBusiness.AsignOscar(movie);
+            return Ok();
+        }
+
         [HttpPut]
         public IActionResult Edit(Guid id, [FromBody] MovieModel movie)
         {
